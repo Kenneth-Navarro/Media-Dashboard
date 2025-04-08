@@ -1,10 +1,3 @@
-Integrantes del proyecto:
-
-Jimena Jiménez Alfaro, Kenneth Navarro Pérez, Hersal Alfaro Cisneros y Carlos Hidalgo Leitón
-
-Enlace al repositorio de git.
-
-https://github.com/CarlosHidalgoLeiton/ProyectoPAWG1
 
 Especificaciones básicas del proyecto:
 
