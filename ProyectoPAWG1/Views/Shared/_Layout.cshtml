@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
+    <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+    <title>
+        Dashboard App
+    </title>
+    <!--     Fonts and icons     -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+    <!-- Nucleo Icons -->
+    <link href="~/css/soft-ui-dashboard.css" rel="stylesheet" />
+    <link href="~/css/nucleo-icons.css" rel="stylesheet" />
+    <link href="~/css/nucleo-svg.css" rel="stylesheet" />
+    <!-- Font Awesome Icons -->
+    @* <link href="../assets/css/nucleo-svg.css" rel="stylesheet" /> *@
+    <!-- CSS Files -->
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+    integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+    crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.css" />
+    <script src="https://kit.fontawesome.com/2425b0cf01.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</head>
+
+<body class="g-sidenav-show  bg-gray-100">
+    <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 " id="sidenav-main">
+        <div class="sidenav-header">
+            <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
+            <a asp-action="Index" asp-controller="Dashboard" class="navbar-brand m-0">
+                <span class="ms-1 font-weight-bold">Dashboard System</span>
+            </a>
+        </div>
+        <hr class="horizontal dark mt-0">
+        <div class="collapse navbar-collapse  w-auto  max-height-vh-100 h-100" id="sidenav-collapse-main">
+            <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a asp-action="Index" asp-controller="Dashboard" class="nav-link">
+                            <div class="icon icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                                <i class="fa-solid fa-house"></i>
+                            </div>
+                            <span class="nav-link-text ms-1">Home</span>
+                        </a>
+                    </li>
+                @if (User.IsInRole("Admin"))
+                {
+                    <li class="nav-item">
+                        <a asp-action="Index" asp-controller="Component" class="nav-link">
+                            <div class="icon icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                                <i class="fa-regular fa-window-restore" style="z-index: 1;"></i>
+                            </div>
+                            <span class="nav-link-text ms-1">My components</span>
+                        </a>
+                    </li>
+                
+                <li class="nav-item">
+                    <a asp-action="Index" asp-controller="User" class="nav-link">
+                        <div class="icon icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="fa-solid fa-user" style="z-index: 1;"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Users</span>
+                    </a>
+                </li>
+                }
+            </ul>
+        </div>
+    </aside>
+    <main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg ">
+        <!-- Navbar -->
+        <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
+            <div class="container-fluid py-1 px-3">
+                <nav aria-label="breadcrumb">
+                    <h6 class="font-weight-bolder mb-0">@ViewBag.Page</h6>
+                </nav>
+                <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4 d-flex justify-content-end" id="navbar">
+                    <ul class="navbar-nav  justify-content-end">
+                        <li class="nav-item d-flex align-items-center">
+                            <a asp-action="Logout" asp-controller="Login" class="nav-link text-body font-weight-bold px-0">
+                                <i class="fa fa-user me-sm-1"></i>
+                                <span class="d-sm-inline d-none">Log out</span>
+                            </a>
+                        </li>
+                        <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
+                            <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
+                                <div class="sidenav-toggler-inner">
+                                    <i class="sidenav-toggler-line"></i>
+                                    <i class="sidenav-toggler-line"></i>
+                                    <i class="sidenav-toggler-line"></i>
+                                </div>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- End Navbar -->
+        <div class="container-fluid py-4">
+            <div class="container">
+                <main role="main" class="pb-3">
+                    @RenderBody()
+                </main>
+            </div>
+        </div>
+    </main>
+    <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
+    <!--   Core JS Files   -->
+    <script src="~/js/plugins/perfect-scrollbar.min.js"></script>
+    <script src="~/js/plugins/smooth-scrollbar.min.js"></script>
+    <script src="~/js/plugins/chartjs.min.js"></script>
+
+
+    <script>
+        var win = navigator.platform.indexOf('Win') > -1;
+        if (win && document.querySelector('#sidenav-scrollbar')) {
+            var options = {
+                damping: '0.5'
+            }
+            Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+        }
+    </script>
+    <!-- Github buttons -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
+    <script src="~/js/soft-ui-dashboard.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#myTable').DataTable();
+        });
+    </script>
+</body>
+
+</html>

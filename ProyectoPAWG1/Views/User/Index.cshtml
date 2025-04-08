@@ -1,0 +1,52 @@
+﻿@model IEnumerable<PAWG1.Models.EFModels.User>
+
+@{
+    ViewData["Title"] = "Users";
+}
+<div class="mb-4">
+    <h1 class="me-auto display-6  fw-bold">Users</h1>
+    <a asp-action="Create" class="btn btn-primary">Create</a>
+</div>
+
+
+
+
+<table id="myTable" class="display">
+    <thead>
+        <tr>
+            <th> User Name</th>
+            <th> Email</th>
+            <th> State </th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.Username
+                </td>
+                <td>
+                    @item.Email
+                </td>
+                <td>
+                    @(item.State ? "Activated" : "Disabled")
+                </td>
+             
+
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdUser" class="btn btn-success">
+                        <i class="fa-solid fa-pen"></i>
+                    </a> 
+                    <a asp-action="Details" asp-route-id="@item.IdUser" class="btn btn-info">
+                        <i class="fa-solid fa-eye"></i>
+                    </a> 
+                    <a asp-action="Delete" asp-route-id="@item.IdUser" class="btn btn-danger">
+                        <i class="fa-solid fa-trash"></i>
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

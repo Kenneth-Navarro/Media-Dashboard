@@ -1,0 +1,121 @@
+﻿@model PAWG1.Models.EFModels.Component
+
+<h1>Create Component</h1>
+
+<h4>Component</h4>
+<hr />
+<form asp-controller="Component" asp-action="Create" enctype="multipart/form-data">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Title" class="control-label" ></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Descrip" class="control-label"></label>
+                <input asp-for="Descrip" class="form-control" />
+                <span asp-validation-for="Descrip" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TypeComponent" class="control-label"></label>
+                <select asp-for="TypeComponent" class="form-select">
+                    <option disabled selected>Select the Type</option>
+                    <option value="Weather">Weather</option>
+                    <option value="Exchange Rate">Exchange Rate</option>
+                    <option value="News">News</option>
+                </select>
+                <span asp-validation-for="TypeComponent" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Size" class="control-label"></label>
+                <select asp-for="Size" class="form-select select2">
+                    <option disabled selected>Select the Size</option>
+                    <option value="1">1 Column</option>
+                    <option value="2">2 Columns</option>
+                    <option value="3">3 Columns</option>
+                    <option value="4">4 Columns</option>
+                    <option value="5">5 Columns</option>
+                    <option value="6">6 Columns</option>
+                    <option value="7">7 Columns</option>
+                    <option value="8">8 Columns</option>
+                    <option value="9">9 Columns</option>
+                    <option value="10">10 Columns</option>
+                    <option value="11">11 Columns</option>
+                    <option value="12">12 Columns</option>
+                </select>
+                <span asp-validation-for="Size" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ApiUrl" class="control-label"></label>
+                <input asp-for="ApiUrl" class="form-control" type="url" />
+                <span asp-validation-for="ApiUrl" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="ApiKey" class="control-label"></label>
+                <input asp-for="ApiKey" class="form-control" />
+                <span asp-validation-for="ApiKey" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ApiKeyId" class="control-label"></label>
+                <select asp-for="ApiKeyId" class="form-select">
+                    <option disabled selected>Select the Id</option>
+                    <option value="&appid=">appid</option>
+                    <option value="&apiKey=">apiKey</option>
+                </select>
+                <span asp-validation-for="ApiKeyId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Color" class="control-label"></label>
+                <select asp-for="Color" class="form-select">
+                    <option disabled selected>Select the Color</option>
+                    <option value="#fd7e14">Orange</option>
+                    <option value="#FBD38D">Yellow</option>
+                    <option value="#20c997">Teal</option>
+                    <option value="#0dcaf0">Cyan</option>
+                    <option value="#F56565">Red</option>
+                    <option value="#6f42c1">Purple</option>
+                </select>
+                <span asp-validation-for="Color" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Simbol" class="control-label"></label>
+                <input asp-for="Simbol" class="form-control" type="file" />
+                <span asp-validation-for="Simbol" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="State" class="control-label"></label>
+                <select asp-for="State" class="form-select">
+                    <option disabled selected>Select the State</option>
+                    <option value="true">Active</option>
+                    <option value="false">Disable</option>
+                </select>
+                <span asp-validation-for="State" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AllowedRole" class="control-label"></label>
+                <select asp-for="AllowedRole" class="form-select">
+                    <option disabled selected>Select the role allowed</option>
+                    <option value="All">All</option>
+                    <option value="Admin">Admin</option>
+                    <option value="User">User</option>
+                </select>
+                <span asp-validation-for="AllowedRole" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="col-md-12 text-center">
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index" class="btn btn-secondary">Go Back</a>
+</div>

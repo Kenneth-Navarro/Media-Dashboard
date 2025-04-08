@@ -1,0 +1,25 @@
+﻿@model PAWG1.Models.EFModels.User
+
+<div class="d-flex justify-content-center">
+    <div class="row">
+        <div class="col-md-12">
+            <h4>Are you sure about delete this user?</h4>
+            <h5>Component</h5>
+            <hr />
+
+            <p>Username: @Model.Username</p>
+            <p>Email: @Model.Email</p>
+            <p>
+                Role: @((ViewBag.Roles != null) ? @ViewBag.Roles.Name : "No hay role Asignado")
+            </p>
+        </div>
+        <div class="col-md-12">
+            <form asp-action="DeleteConfirmed" asp-route-id="@Model.IdUser">
+                <a asp-action="Index" class="btn btn-secondary">Go Back</a>
+                <input type="hidden" asp-for="IdUser" />
+                <button type="submit" class="btn btn-danger">Confirm</button>
+            </form>
+        </div>
+    </div>
+</div>
+
